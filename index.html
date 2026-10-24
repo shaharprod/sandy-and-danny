@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>מועדון הצביעה של סנדי ודני</title>
+<meta name="description" content="דפי צביעה חינמיים מכל פרק בסדרה סנדי ודני · Free coloring pages from every Sandy And Danny episode">
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8ef;--card:#fff;--ink:#2b2340;--muted:#6f6680;--line:#f0e2cf;--pink:#e2557f;--blue:#3a7bd5;--green:#3d9a5b;--yellow:#ffd34d;--lock:#b9a9c9}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Varela Round",Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+button{font-family:inherit;cursor:pointer}
+header{background:#fff;border-bottom:3px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .logo{font-size:30px}
+.brand h1{font-size:19px;margin:0;color:var(--pink)}
+.brand p{margin:0;font-size:12px;color:var(--muted)}
+.hbtns{display:flex;gap:8px;align-items:center}
+.pill{border:2px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font-size:14px;font-weight:bold;color:var(--ink)}
+.pill.main{background:var(--blue);border-color:var(--blue);color:#fff}
+.pill.vip{background:var(--green);border-color:var(--green);color:#fff}
+main{flex:1;width:100%;max-width:1150px;margin:0 auto;padding:14px 16px;display:grid;grid-template-columns:270px 1fr;gap:14px}
+@media(max-width:860px){main{grid-template-columns:minmax(0,1fr)}}
+.card{min-width:0}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px}
+aside h2{font-size:15px;margin:2px 4px 10px}
+.eps{display:flex;flex-direction:column;gap:6px;max-height:70vh;overflow:auto}
+@media(max-width:860px){.eps{flex-direction:row;overflow-x:auto;max-height:none;padding-bottom:4px}}
+.ep{flex-shrink:0;display:flex;align-items:center;gap:8px;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 10px;text-align:start;font-size:14px;color:var(--ink);min-width:200px}
+.ep .n{background:var(--yellow);border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-weight:bold;flex-shrink:0}
+.ep.on{border-color:var(--pink);background:#fff0f4}
+.ep .em{font-size:20px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.top h2{margin:0;font-size:18px}
+.pages{display:flex;gap:6px;flex-wrap:wrap}
+.pg{border:2px solid var(--line);background:#fff;border-radius:12px;padding:6px 12px;font-size:13px;font-weight:bold;color:var(--ink)}
+.pg.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.pg.locked{color:var(--lock)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:10px}
+.tgroup{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tool{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;font-size:15px;font-weight:bold;color:var(--ink)}
+.tool.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--line)}
+.sw.on{box-shadow:0 0 0 3px var(--ink);transform:scale(1.1)}
+.stage{position:relative;margin-top:10px;width:100%;aspect-ratio:4/3;background:#fff;border-radius:16px;overflow:hidden;border:3px solid var(--line);touch-action:none}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+#outline{pointer-events:none}
+.lockov{position:absolute;inset:0;background:rgba(255,248,239,.93);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:10px}
+.lockov.show{display:flex}
+.lockov .big{font-size:54px}
+.lockov p{margin:0;max-width:420px}
+.free{display:inline-block;background:var(--green);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;margin-inline-start:6px;vertical-align:middle}
+footer{text-align:center;font-size:12px;color:var(--muted);padding:14px 16px 24px}
+footer a{color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(43,35,64,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.show{display:flex}
+.box{background:#fff;border-radius:22px;max-width:620px;width:100%;padding:20px;max-height:92vh;overflow:auto;position:relative}
+.box h3{margin:0 0 8px;font-size:21px}
+.x{position:absolute;inset-inline-end:12px;top:10px;border:none;background:none;font-size:22px;color:var(--muted)}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+@media(max-width:520px){.plans{grid-template-columns:1fr}}
+.plan{border:3px solid var(--line);border-radius:18px;padding:14px;text-align:center}
+.plan.best{border-color:var(--green)}
+.plan .price{font-size:30px;font-weight:bold;margin:6px 0}
+.plan .sub{font-size:13px;color:var(--muted)}
+.paybtn{display:block;width:100%;margin-top:8px;border:none;border-radius:12px;padding:10px;font-size:15px;font-weight:bold;color:#fff;text-decoration:none}
+.paypal{background:#0070ba}
+.morning{background:#7a4fd1}
+.paybtn.off{background:#cfc6da;pointer-events:none}
+.gate input,.unlock input{font-size:20px;padding:8px 12px;border:2px solid var(--line);border-radius:12px;width:140px;text-align:center}
+.unlock input{width:240px;font-size:16px}
+.err{color:#c0392b;font-size:14px;min-height:18px}
+.small{font-size:13px;color:var(--muted)}
+#printImg{display:none}
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  body{background:#fff}
+  header,main,footer,.modal{display:none!important}
+  #printImg{display:block;width:100%;height:auto}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">🎨</span><div><h1 id="tTitle"></h1><p id="tSub"></p></div></div>
+  <div class="hbtns">
+    <button class="pill" id="langBtn" onclick="switchLang()"></button>
+    <button class="pill main" id="parentsBtn" onclick="openGate()"></button>
+  </div>
+</header>
+
+<main>
+  <aside class="card">
+    <h2 id="tSeason"></h2>
+    <div class="eps" id="eps"></div>
+  </aside>
+  <section class="card">
+    <div class="top">
+      <h2 id="epTitle"></h2>
+      <div class="pages" id="pages"></div>
+    </div>
+    <div class="tools">
+      <div class="tgroup">
+        <button class="tool on" id="tFill" onclick="setTool('fill')"></button>
+        <button class="tool" id="tBrush" onclick="setTool('brush')"></button>
+        <button class="tool" id="tEraser" onclick="setTool('eraser')"></button>
+      </div>
+      <div class="tgroup" id="palette"></div>
+      <div class="tgroup">
+        <button class="tool" id="tClear" onclick="clearColor()"></button>
+        <button class="tool" id="tSave" onclick="savePng()"></button>
+        <button class="tool" id="tPrint" onclick="printPage()"></button>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <canvas id="paint" width="800" height="600"></canvas>
+      <canvas id="outline" width="800" height="600"></canvas>
+      <div class="lockov" id="lockov">
+        <div class="big">🔒</div>
+        <p id="tLocked"></p>
+        <button class="pill main" onclick="openGate()" id="tLockedBtn"></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><span id="tFooter"></span><br>SHAHAR AI PRODUCTIONS · <a href="mailto:shaharprod@gmail.com">shaharprod@gmail.com</a></footer>
+
+<img id="printImg" alt="">
+
+<!-- שער הורים -->
+<div class="modal" id="gateModal"><div class="box gate">
+  <button class="x" onclick="closeM('gateModal')">✕</button>
+  <h3 id="tGateH"></h3>
+  <p id="tGateQ"></p>
+  <input id="gateIn" inputmode="numeric" autocomplete="off">
+  <button class="pill main" onclick="checkGate()" id="tGateGo"></button>
+  <div class="err" id="gateErr"></div>
+</div></div>
+
+<!-- מנוי -->
+<div class="modal" id="payModal"><div class="box">
+  <button class="x" onclick="closeM('payModal')">✕</button>
+  <h3 id="tPayH"></h3>
+  <p class="small" id="tPayP"></p>
+  <div class="plans">
+    <div class="plan">
+      <div id="tMonthly"></div>
+      <div class="price" id="pMonthly"></div>
+      <div class="sub" id="tPerMonth"></div>
+      <a class="paybtn paypal" id="ppMonthly" target="_blank" rel="noopener">PayPal</a>
+      <a class="paybtn morning" id="mnMonthly" target="_blank" rel="noopener"></a>
+    </div>
+    <div class="plan best">
+      <div id="tAnnual"></div>
+      <div class="price" id="pAnnual"></div>
+      <div class="sub" id="tPerYear"></div>
+      <a class="paybtn paypal" id="ppAnnual" target="_blank" rel="noopener">PayPal</a>
+      <a class="paybtn morning" id="mnAnnual" target="_blank" rel="noopener"></a>
+    </div>
+  </div>
+  <p class="small" id="tPayNote"></p>
+  <div class="unlock">
+    <b id="tHaveCode"></b><br>
+    <input id="codeIn" autocomplete="off" placeholder="FARM-XXXXXX-XXXXXX">
+    <button class="pill vip" onclick="checkCode()" id="tCodeGo"></button>
+    <div class="err" id="codeErr"></div>
+  </div>
+</div></div>
+
+<script>
+/* ===== הגדרות שמשנים בלי לגעת בקוד ===== */
+// קישורי תשלום: מדביקים כאן את הקישורים מ-PayPal ומ-Morning. כל עוד ריק, הכפתור מוצג "בקרוב".
+const PAY = {
+  he:{monthly:{paypal:"",morning:""}, annual:{paypal:"",morning:""}},
+  en:{monthly:{paypal:"",morning:""}, annual:{paypal:"",morning:""}}
+};
+const PRICES = {he:{m:"22.40 ₪",y:"134 ₪"}, en:{m:"$6.29",y:"$35.99"}};
+// טביעת SHA-256 של קוד הפתיחה למנויים (הקוד עצמו לא נמצא בקובץ)
+const UNLOCK_HASH = "cd6ab2fe9025eb3281f59b89340a6e7c131a7e3c6e2fd25be4d14871f458fc55";
+
+/* ===== טקסטים ===== */
+const T = {
+he:{dir:"rtl",title:"מועדון הצביעה של סנדי ודני",sub:"עונה 1 · בחווה של סבא וסבתא",lang:"English",parents:"👪 להורים",season:"🚜 פרקי העונה",page:"דף",fill:"🪣 דלי",brush:"🖌️ מכחול",eraser:"🧽 מחק",clear:"🗑️ נקה",save:"💾 שמור",print:"🖨️ הדפס",free:"חינם",
+locked:"הדף הזה פתוח למנויי המועדון. דף 1 של כל פרק חינם תמיד.",lockedBtn:"👪 להורים: פתיחת כל הדפים",
+footer:"דף 1 בכל פרק חינמי תמיד, בלי הרשמה ובלי מייל. האתר לא אוסף שום מידע מילדים.",
+gateH:"אזור הורים",gateQ:"כדי להמשיך, כמה זה",gateGo:"המשך",gateErr:"לא נכון, נסו שוב",
+payH:"מנוי למועדון הצביעה",payP:"כל דפי הצביעה מכל הפרקים, וחוברת חדשה עם כל פרק. אפשר לבטל בכל רגע.",
+monthly:"מנוי חודשי",annual:"מנוי שנתי · משתלם",perMonth:"לחודש",perYear:"לשנה (פחות מ-11.20 ₪ לחודש)",morning:"אשראי / ביט (Morning)",soon:"בקרוב",
+payNote:"אחרי התשלום יישלח אליכם במייל קוד פתיחה. מזינים אותו כאן, פעם אחת בכל מכשיר.",haveCode:"כבר יש לכם קוד?",codeGo:"פתיחה",codeErr:"הקוד לא תקין",codeOk:"✅ מנוי פעיל",
+eps:[["נוסעים לחווה!","🏡"],["הביצה של מוצי","🐔"],["מו! הפרה שאוהבת לשיר","🐄"],["הכבשה והצמר","🐑"],["העז הקופצת","🐐"],["הסוס שפחד","🐴"],["החמור העקשן","🫏"],["הברווזונים בבריכה","🦆"],["הארנבון שנעלם","🐰"],["הדבורים והדבש","🐝"],["התרנגול שקם מוקדם","🐓"],["חג החווה!","🎉"]]},
+en:{dir:"ltr",title:"Sandy And Danny Coloring Club",sub:"Season 1 · At Grandpa and Grandma's Farm",lang:"עברית",parents:"👪 Parents",season:"🚜 Season episodes",page:"Page",fill:"🪣 Fill",brush:"🖌️ Brush",eraser:"🧽 Eraser",clear:"🗑️ Clear",save:"💾 Save",print:"🖨️ Print",free:"Free",
+locked:"This page is for club members. Page 1 of every episode is always free.",lockedBtn:"👪 Parents: unlock all pages",
+footer:"Page 1 of every episode is always free, no sign-up and no email. This site collects no data from children.",
+gateH:"Parents' area",gateQ:"To continue, what is",gateGo:"Continue",gateErr:"Not quite, try again",
+payH:"Coloring Club membership",payP:"Every coloring page from every episode, plus a new book with each episode. Cancel anytime.",
+monthly:"Monthly",annual:"Yearly · best value",perMonth:"per month",perYear:"per year (under $3 a month)",morning:"Card (Morning)",soon:"Coming soon",
+payNote:"After payment you'll get an unlock code by email. Enter it here once on each device.",haveCode:"Already have a code?",codeGo:"Unlock",codeErr:"That code isn't valid",codeOk:"✅ Membership active",
+eps:[["Off to the Farm!","🏡"],["Who Laid the Egg?","🐔"],["Moo-sic Cow","🐄"],["The Fluffy Sheep","🐑"],["The Jumping Goat","🐐"],["The Shy Horse","🐴"],["Stubborn Donkey","🫏"],["Ducklings in a Row","🦆"],["The Missing Bunny","🐰"],["Busy Bees","🐝"],["The Early Rooster","🐓"],["Farm Festival!","🎉"]]}
+};
+
+/* ===== ציורי קו (זמניים, עד שיהיו דפי ה-Masters) ===== */
+const S = 'fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"';
+const scene = `<circle cx="690" cy="95" r="45"/><path d="M690 25v-12M745 45l9-9M760 95h12M635 45l-9-9M620 95h-12"/><path d="M30 500H770"/><path d="M50 500v-70M110 500v-70M170 500v-70M30 450H190M30 480H190"/><path d="M90 190c-40 0-55-50-15-60 5-35 60-40 75-10 40-5 55 50 15 70z"/>`;
+const smallBarn = `<path d="M560 500V380l70-55 70 55v120z"/><path d="M600 500v-60h60v60M600 440l60 60M660 440l-60 60"/>`;
+const ART = [
+ /*1 farm*/ `<path d="M220 500V280l180-130 180 130v220z"/><path d="M200 295 400 150l200 145"/><path d="M340 500V380h120v120zM340 380l120 120M460 380 340 500"/><rect x="370" y="230" width="60" height="55" rx="6"/><path d="M400 230v55M370 257h60"/><path d="M640 500V360M600 380c-40-60 10-130 40-130s80 70 40 130z"/>`,
+ /*2 chicken*/ `<ellipse cx="400" cy="360" rx="150" ry="115"/><circle cx="510" cy="230" r="65"/><path d="M480 170c0-30 25-30 25-5 5-30 30-25 25 5 15-15 30 0 15 20"/><path d="M570 225l45 15-45 15"/><circle cx="525" cy="215" r="9"/><path d="M520 268c10 25 20 25 25 0"/><path d="M330 330c40 70 120 70 150 10"/><path d="M260 330c-40-20-60 10-40 40 -30 10-20 50 15 40"/><path d="M370 475v30M430 475v30M355 505h30M415 505h30"/>`,
+ /*3 cow*/ `<rect x="210" y="250" width="330" height="180" rx="80"/><ellipse cx="590" cy="250" rx="85" ry="75"/><ellipse cx="610" cy="295" rx="50" ry="32"/><circle cx="595" cy="295" r="6"/><circle cx="628" cy="295" r="6"/><circle cx="570" cy="230" r="9"/><circle cx="620" cy="230" r="9"/><path d="M545 190c-20-30-15-50 5-55M635 190c20-30 15-50-5-55"/><path d="M505 215c-35-15-50 5-35 25M675 215c35-15 50 5 35 25"/><path d="M260 420v80M310 420v80M440 420v80M490 420v80"/><path d="M280 290c30-20 70 0 55 35s-70 20-55-35zM420 330c25-15 60 5 45 35s-60 10-45-35z"/><path d="M360 430c0 30 50 30 50 0"/><path d="M210 300c-40 10-50 60-30 90"/>`,
+ /*4 sheep*/ `<circle cx="300" cy="320" r="70"/><circle cx="390" cy="290" r="75"/><circle cx="480" cy="320" r="70"/><circle cx="340" cy="390" r="70"/><circle cx="440" cy="390" r="70"/><ellipse cx="590" cy="290" rx="55" ry="65"/><circle cx="575" cy="280" r="8"/><circle cx="610" cy="280" r="8"/><path d="M580 320c10 12 20 12 30 0"/><path d="M540 260c-35 0-45-25-25-35M640 260c35 0 45-25 25-35"/><path d="M320 450v55M370 455v50M430 455v50M480 450v55"/>`,
+ /*5 goat*/ `<ellipse cx="370" cy="350" rx="170" ry="95"/><ellipse cx="580" cy="250" rx="60" ry="75"/><path d="M545 190c-10-50 20-80 50-70M605 185c10-50 45-70 70-50"/><path d="M560 320l20 60 20-60"/><circle cx="565" cy="240" r="8"/><circle cx="600" cy="240" r="8"/><path d="M520 230c-30-5-40 15-25 30M640 230c30-5 40 15 25 30"/><path d="M260 430v75M310 435v70M430 435v70M480 430v75"/><path d="M200 330c-30-20-40-50-20-60"/>`,
+ /*6 horse*/ `<ellipse cx="350" cy="340" rx="170" ry="90"/><path d="M480 290l60-140c10-25 50-30 70-10l45 50c15 20 0 45-25 40l-50-10-40 110"/><circle cx="595" cy="170" r="8"/><path d="M560 140l5-35 25 25"/><path d="M500 280c10-60 30-110 60-135M520 250c-15-10-20-30-5-45M540 200c-15-10-20-30-5-45"/><path d="M240 410v95M290 420v85M410 420v85M460 410v95"/><path d="M185 320c-50 10-60 90-30 120 0-50 10-80 30-90"/>`,
+ /*7 donkey*/ `<ellipse cx="350" cy="350" rx="165" ry="90"/><path d="M480 300l50-110c10-25 50-25 65-5l35 45c15 20 0 45-25 40l-45-10-30 90"/><path d="M555 175c-10-60-5-90 15-95 15 0 15 40 5 95M595 180c10-60 25-85 40-80 15 10 0 45-20 85"/><circle cx="590" cy="215" r="8"/><circle cx="625" cy="255" r="5"/><path d="M245 420v85M295 425v80M405 425v80M455 420v85"/><path d="M188 330c-25 40-25 80-10 100l10-30"/>`,
+ /*8 duck*/ `<ellipse cx="360" cy="380" rx="160" ry="90"/><circle cx="500" cy="260" r="65"/><path d="M555 255c40-10 75 0 70 20s-45 20-70 10"/><circle cx="510" cy="245" r="9"/><path d="M300 360c40 50 110 50 140 0"/><path d="M200 370c-30-30-20-60 0-55"/><path d="M180 480c40-25 80 25 120 0s80 25 120 0 80 25 120 0 80 25 120 0"/>`,
+ /*9 bunny*/ `<ellipse cx="380" cy="390" rx="130" ry="100"/><circle cx="420" cy="260" r="75"/><ellipse cx="385" cy="130" rx="28" ry="80"/><ellipse cx="455" cy="130" rx="28" ry="80"/><ellipse cx="385" cy="135" rx="12" ry="55"/><ellipse cx="455" cy="135" rx="12" ry="55"/><circle cx="395" cy="250" r="9"/><circle cx="445" cy="250" r="9"/><path d="M410 280l10 10 10-10M420 290c0 15-20 20-25 10M420 290c0 15 20 20 25 10"/><circle cx="250" cy="400" r="30"/><path d="M330 480c0 25 50 25 50 0M430 480c0 25 50 25 50 0"/><path d="M560 470l70-110 25 15z"/><path d="M640 365c5-25 25-30 30-20M650 372c20-15 40-5 35 10"/>`,
+ /*10 bee*/ `<ellipse cx="400" cy="300" rx="150" ry="95"/><path d="M340 210c-15 60-15 120 0 180M410 205c-15 65-15 125 0 190M475 220c-10 55-10 105 0 160"/><circle cx="560" cy="290" r="45"/><circle cx="572" cy="280" r="8"/><path d="M560 250c0-35 15-50 30-50M575 252c10-30 30-40 45-35"/><ellipse cx="350" cy="170" rx="70" ry="45"/><ellipse cx="440" cy="165" rx="60" ry="40"/><path d="M250 300l-35 10 35 10"/><path d="M150 500V420"/><circle cx="150" cy="390" r="25"/><circle cx="150" cy="345" r="22"/><circle cx="190" cy="385" r="22"/><circle cx="110" cy="385" r="22"/><circle cx="150" cy="430" r="0"/>`,
+ /*11 rooster*/ `<ellipse cx="400" cy="360" rx="140" ry="110"/><circle cx="500" cy="225" r="60"/><path d="M455 170c-5-40 25-45 30-15 5-40 40-40 35-5 15-25 45-10 25 25"/><path d="M555 215l50 15-50 15"/><circle cx="515" cy="210" r="9"/><path d="M505 260c5 35 30 35 30 0"/><path d="M270 330c-60-60-80-150-30-160 0 50 20 90 40 110M280 360c-80-30-120-100-80-130 10 50 40 80 80 95M280 390c-90 0-130-50-100-90 20 40 50 60 100 65"/><path d="M370 470v35M430 470v35M355 505h30M415 505h30"/>`,
+ /*12 festival*/ `<path d="M60 90q170 70 340 0t340 0"/><path d="M110 108l20 60 25-50M200 125l15 60 30-55M300 115l10 60 35-55M460 100l20 60 25-55M560 112l15 60 30-55M660 100l15 60 30-55"/><path d="M250 500V340l150-110 150 110v160z"/><path d="M350 500v-90h100v90"/><circle cx="160" cy="300" r="50"/><path d="M160 350c0 40-20 60 0 150"/><circle cx="640" cy="290" r="50"/><path d="M640 340c0 40 20 60 0 160"/><path d="M380 300a20 20 0 0 1 40 0 20 20 0 0 1 -40 0"/>`
+];
+function svgFor(ep, page){
+  const body = page===1
+    ? `<g ${S}><rect x="12" y="12" width="776" height="576" rx="26"/>${ART[ep-1]}</g>`
+    : `<g ${S}><rect x="12" y="12" width="776" height="576" rx="26"/>${scene}${smallBarn}<g transform="translate(160 150) scale(0.62)">${ART[ep-1]}</g></g>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">${body}</svg>`;
+}
+const PAGES_PER_EP = 2;
+
+/* ===== מצב ===== */
+const qs = new URLSearchParams(location.search);
+let lang = qs.get('lang')==='en' ? 'en' : (localStorage.getItem('sd_lang')||'he');
+if(qs.get('lang')) lang = qs.get('lang')==='en'?'en':'he';
+let ep = Math.min(12, Math.max(1, parseInt(qs.get('e'))||1));
+let page = Math.min(PAGES_PER_EP, Math.max(1, parseInt(qs.get('p'))||1));
+let tool='fill', color='#ef4444', drawing=false, gateAns=0;
+const COLORS=['#ef4444','#f97316','#facc15','#22c55e','#16a34a','#06b6d4','#3b82f6','#8b5cf6','#ec4899','#f5d0a9','#92400e','#9ca3af','#1f2937'];
+function isMember(){ try{return localStorage.getItem('sd_member')===UNLOCK_HASH}catch(e){return false} }
+function store(k,v){ try{localStorage.setItem(k,v)}catch(e){} }
+
+/* ===== ממשק ===== */
+function $(id){return document.getElementById(id)}
+function render(){
+  const t=T[lang];
+  document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  document.title=t.title;
+  $('tTitle').textContent=t.title; $('tSub').textContent=t.sub; $('langBtn').textContent=t.lang;
+  $('parentsBtn').textContent=isMember()?t.codeOk:t.parents;
+  $('parentsBtn').className='pill '+(isMember()?'vip':'main');
+  $('tSeason').textContent=t.season;
+  ['fill','brush','eraser','clear','save','print'].forEach(k=>$('t'+k[0].toUpperCase()+k.slice(1)).textContent=t[k]);
+  $('tLocked').textContent=t.locked; $('tLockedBtn').textContent=t.lockedBtn; $('tFooter').textContent=t.footer;
+  $('tGateH').textContent=t.gateH; $('tGateGo').textContent=t.gateGo;
+  $('tPayH').textContent=t.payH; $('tPayP').textContent=t.payP; $('tMonthly').textContent=t.monthly; $('tAnnual').textContent=t.annual;
+  $('pMonthly').textContent=PRICES[lang].m; $('pAnnual').textContent=PRICES[lang].y; $('tPerMonth').textContent=t.perMonth; $('tPerYear').textContent=t.perYear;
+  $('tPayNote').textContent=t.payNote; $('tHaveCode').textContent=t.haveCode; $('tCodeGo').textContent=t.codeGo;
+  [['ppMonthly','monthly','paypal','PayPal'],['mnMonthly','monthly','morning',t.morning],['ppAnnual','annual','paypal','PayPal'],['mnAnnual','annual','morning',t.morning]].forEach(([id,plan,prov,label])=>{
+    const url=PAY[lang][plan][prov], a=$(id);
+    if(url){a.href=url;a.classList.remove('off');a.textContent=label}else{a.removeAttribute('href');a.classList.add('off');a.textContent=label+' · '+t.soon}
+  });
+  $('eps').innerHTML=t.eps.map((e,i)=>`<button class="ep ${i+1===ep?'on':''}" onclick="go(${i+1},1)"><span class="n">${i+1}</span><span class="em">${e[1]}</span><span>${e[0]}</span></button>`).join('');
+  const onEp=document.querySelector('.ep.on'); if(onEp) onEp.scrollIntoView({block:'nearest',inline:'nearest'});
+  $('epTitle').innerHTML=`${ep}. ${t.eps[ep-1][0]}`;
+  let ph=''; for(let p=1;p<=PAGES_PER_EP;p++){const lock=p>1&&!isMember();ph+=`<button class="pg ${p===page?'on':''} ${lock?'locked':''}" onclick="go(${ep},${p})">${lock?'🔒 ':''}${t.page} ${p}${p===1?` <span class="free">${t.free}</span>`:''}</button>`}
+  $('pages').innerHTML=ph;
+  $('palette').innerHTML=COLORS.map(c=>`<button class="sw ${c===color?'on':''}" style="background:${c}" onclick="pick('${c}')" aria-label="${c}"></button>`).join('');
+  ['Fill','Brush','Eraser'].forEach(n=>$('t'+n).classList.toggle('on',n.toLowerCase()===tool));
+}
+function go(e,p){
+  ep=e; page=p;
+  const u=new URL(location.href); u.searchParams.set('e',ep); u.searchParams.set('p',page); u.searchParams.set('lang',lang);
+  history.replaceState(null,'',u);
+  render(); loadPage();
+}
+function switchLang(){lang=lang==='he'?'en':'he'; store('sd_lang',lang); go(ep,page)}
+function pick(c){color=c; if(tool==='eraser')tool='brush'; render()}
+function setTool(x){tool=x; render()}
+
+/* ===== קנבס ===== */
+const paint=$('paint'), pctx=paint.getContext('2d',{willReadFrequently:true});
+const outline=$('outline'), octx=outline.getContext('2d',{willReadFrequently:true});
+function clearColor(){pctx.fillStyle='#fff';pctx.fillRect(0,0,800,600)}
+function loadPage(){
+  const locked = page>1 && !isMember();
+  $('lockov').classList.toggle('show',locked);
+  clearColor(); octx.clearRect(0,0,800,600);
+  const img=new Image();
+  img.onload=()=>{octx.drawImage(img,0,0,800,600)};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgFor(ep,page));
+}
+function hex(h){const n=parseInt(h.slice(1),16);return[(n>>16)&255,(n>>8)&255,n&255]}
+function flood(x,y,c){
+  const W=800,H=600, d=pctx.getImageData(0,0,W,H), o=octx.getImageData(0,0,W,H), dp=d.data, op=o.data;
+  const s=(y*W+x)*4; if(op[s+3]>100)return;
+  const tr=dp[s],tg=dp[s+1],tb=dp[s+2]; const [r,g,b]=hex(c);
+  if(tr===r&&tg===g&&tb===b)return;
+  const seen=new Uint8Array(W*H), st=[x+y*W];
+  while(st.length){
+    const i=st.pop(); if(seen[i])continue; seen[i]=1;
+    const px=i%W, q=i*4;
+    if(op[q+3]>100)continue;
+    if(Math.abs(dp[q]-tr)>40||Math.abs(dp[q+1]-tg)>40||Math.abs(dp[q+2]-tb)>40)continue;
+    dp[q]=r;dp[q+1]=g;dp[q+2]=b;dp[q+3]=255;
+    if(px>0)st.push(i-1); if(px<W-1)st.push(i+1); if(i>=W)st.push(i-W); if(i<W*(H-1))st.push(i+W);
+  }
+  pctx.putImageData(d,0,0);
+}
+function pos(e){const r=paint.getBoundingClientRect();return[Math.floor((e.clientX-r.left)*800/r.width),Math.floor((e.clientY-r.top)*600/r.height)]}
+paint.addEventListener('pointerdown',e=>{
+  if(page>1&&!isMember())return;
+  const [x,y]=pos(e);
+  if(tool==='fill'){flood(x,y,color);return}
+  drawing=true; paint.setPointerCapture(e.pointerId);
+  pctx.lineCap='round';pctx.lineJoin='round';pctx.lineWidth=tool==='eraser'?34:18;pctx.strokeStyle=tool==='eraser'?'#fff':color;
+  pctx.beginPath();pctx.moveTo(x,y);pctx.lineTo(x+0.1,y);pctx.stroke();
+});
+paint.addEventListener('pointermove',e=>{if(!drawing)return;const[x,y]=pos(e);pctx.lineTo(x,y);pctx.stroke()});
+['pointerup','pointercancel'].forEach(n=>paint.addEventListener(n,()=>{drawing=false}));
+function composite(){const c=document.createElement('canvas');c.width=800;c.height=600;const x=c.getContext('2d');x.drawImage(paint,0,0);x.drawImage(outline,0,0);return c.toDataURL('image/png')}
+function savePng(){if(page>1&&!isMember())return;const a=document.createElement('a');a.download=`sandy-danny-e${ep}-p${page}.png`;a.href=composite();a.click()}
+function printPage(){if(page>1&&!isMember())return;const im=$('printImg');im.onload=()=>{window.print()};im.src=composite()}
+
+/* ===== שער הורים, מנוי וקוד ===== */
+function openM(id){$(id).classList.add('show')}
+function closeM(id){$(id).classList.remove('show')}
+function openGate(){
+  const a=6+Math.floor(Math.random()*7), b=5+Math.floor(Math.random()*8); gateAns=a*b;
+  $('tGateQ').textContent=`${T[lang].gateQ} ${a} × ${b}?`; $('gateIn').value=''; $('gateErr').textContent=''; openM('gateModal'); setTimeout(()=>$('gateIn').focus(),50);
+}
+function checkGate(){ if(parseInt($('gateIn').value)===gateAns){closeM('gateModal');$('codeErr').textContent='';openM('payModal')} else $('gateErr').textContent=T[lang].gateErr }
+$('gateIn').addEventListener('keydown',e=>{if(e.key==='Enter')checkGate()});
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function checkCode(){
+  const v=$('codeIn').value.trim().toUpperCase();
+  if(await sha(v)===UNLOCK_HASH){store('sd_member',UNLOCK_HASH);closeM('payModal');render();loadPage()}
+  else $('codeErr').textContent=T[lang].codeErr;
+}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
+
+render(); loadPage();
+</script>
+</body>
+</html>
