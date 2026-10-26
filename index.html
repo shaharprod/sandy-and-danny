@@ -2,6 +2,8 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>מועדון הצביעה של סנדי ודני</title>
 <meta name="description" content="דפי צביעה חינמיים מכל פרק בסדרה סנדי ודני · Free coloring pages from every Sandy And Danny episode">
@@ -220,7 +222,8 @@ let ep = Math.min(12, Math.max(1, parseInt(qs.get('e'))||1));
 let page = Math.min(Math.max(1,pageCount(ep)), Math.max(1, parseInt(qs.get('p'))||1));
 let tool='fill', color='#ef4444', drawing=false, gateAns=0;
 const COLORS=['#ef4444','#f97316','#facc15','#22c55e','#16a34a','#06b6d4','#3b82f6','#8b5cf6','#ec4899','#f5d0a9','#92400e','#9ca3af','#1f2937'];
-function isMember(){ try{return localStorage.getItem('sd_member')===UNLOCK_HASH}catch(e){return false} }
+let member=false;
+function isMember(){ return member }
 function store(k,v){ try{localStorage.setItem(k,v)}catch(e){} }
 
 /* ===== ממשק ===== */
@@ -334,12 +337,14 @@ $('gateIn').addEventListener('keydown',e=>{if(e.key==='Enter')checkGate()});
 async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function checkCode(){
   const v=$('codeIn').value.trim().toUpperCase();
-  if(await sha(v)===UNLOCK_HASH){store('sd_member',UNLOCK_HASH);closeM('payModal');render();loadPage()}
+  if(await sha(v)===UNLOCK_HASH){store('sd_code',v);member=true;closeM('payModal');render();loadPage()}
   else $('codeErr').textContent=T[lang].codeErr;
 }
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}));
 
 render(); loadPage();
+// המנוי נשמר כקוד עצמו ונבדק מול הטביעה בכל טעינה, כך שאי אפשר "לזייף" מנוי בהעתקת הטביעה מהקוד
+(async()=>{ try{ localStorage.removeItem('sd_member'); const c=localStorage.getItem('sd_code'); if(c && await sha(c)===UNLOCK_HASH){member=true; render(); loadPage()} }catch(e){} })();
 </script>
 </body>
 </html>
