@@ -288,7 +288,7 @@ eps:[["Off to the Farm!","🏡"],["Who Laid the Egg?","🐔"],["Moo-sic Cow","�
 
 /* ===== דפי צביעה: קווים שחורים על רקע שקוף, נוצרו מהפריימים של כל פרק ===== */
 // כמה דפים יש לכל פרק. פרק שעוד לא יצא מקבל 0 ומוצג "בקרוב".
-const PAGES = {1:4, 2:4};
+const PAGES = {1:6, 2:4};
 const W=1600, H=900;
 function pageCount(e){return PAGES[e]||0}
 
@@ -365,16 +365,16 @@ function clearColor(user){ if(user){ if(!canPaint())return; pushUndo() } whiteOu
 
 /* שמירה אוטומטית של הצביעה בכל דף (במכשיר הזה בלבד) */
 const ART_MAX=10; let saveTimer=null;
-function artKey(){return `sd_art_e${ep}_p${page}`}
+function artKey(){return `sd_art2_e${ep}_p${page}`}
 function saveArtSoon(){ clearTimeout(saveTimer); saveTimer=setTimeout(saveArtNow,700) }
 function saveArtNow(){
   clearTimeout(saveTimer); saveTimer=null;
   if(!canPaint()||!dirty)return; dirty=false;
-  let keys=[]; try{keys=JSON.parse(lsGet('sd_art_keys')||'[]')}catch(e){}
+  let keys=[]; try{keys=JSON.parse(lsGet('sd_art2_keys')||'[]')}catch(e){}
   const k=artKey(); keys=keys.filter(x=>x!==k); keys.push(k);
   while(keys.length>ART_MAX) lsDel(keys.shift());
   const data=paint.toDataURL('image/png');
-  for(let i=0;i<4;i++){ if(store(k,data)){store('sd_art_keys',JSON.stringify(keys));return} if(keys.length>1) lsDel(keys.shift()); else return }
+  for(let i=0;i<4;i++){ if(store(k,data)){store('sd_art2_keys',JSON.stringify(keys));return} if(keys.length>1) lsDel(keys.shift()); else return }
 }
 let dirty=false; function changed(){dirty=true; saveArtSoon()}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)saveArtNow()});
