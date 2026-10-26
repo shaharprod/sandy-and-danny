@@ -291,6 +291,9 @@ eps:[["Off to the Farm!","🏡"],["Who Laid the Egg?","🐔"],["Moo-sic Cow","�
 const PAGES = {1:6, 2:4};
 const W=1600, H=900;
 function pageCount(e){return PAGES[e]||0}
+// כמה דפים חינמיים בכל פרק (ברירת מחדל: דף 1). בפרק 1 שני הדפים שהילדים רואים בסרטון חינמיים.
+const FREE = {1:2};
+function isFree(e,p){return p<=(FREE[e]||1)}
 
 /* ===== מצב ===== */
 const qs = new URLSearchParams(location.search);
@@ -303,7 +306,7 @@ let page = Math.min(Math.max(1,pageCount(ep)), Math.max(1, parseInt(qs.get('p'))
 let tool='fill', color='#ef4444', thick=false, gateAns=0, member=false;
 const COLORS=['#ef4444','#f97316','#facc15','#fde68a','#22c55e','#16a34a','#7dd3fc','#06b6d4','#3b82f6','#8b5cf6','#f9a8d4','#ec4899','#f5d0a9','#c68642','#92400e','#9ca3af','#1f2937'];
 function isMember(){ return member }
-function canPaint(){ return pageCount(ep)>0 && (page===1 || isMember()) }
+function canPaint(){ return pageCount(ep)>0 && (isFree(ep,page) || isMember()) }
 
 /* ===== ממשק ===== */
 function $(id){return document.getElementById(id)}
@@ -334,8 +337,8 @@ function render(){
   $('eps').innerHTML=t.eps.map((e,i)=>`<button class="ep ${i+1===ep?'on':''} ${pageCount(i+1)?'':'soon'}" onclick="go(${i+1},1)"><span class="n">${i+1}</span><span class="em">${e[1]}</span><span>${e[0]}</span></button>`).join('');
   const onEp=document.querySelector('.ep.on'); if(onEp) onEp.scrollIntoView({block:'nearest',inline:'nearest'});
   $('epTitle').textContent=`${ep}. ${t.eps[ep-1][0]}`;
-  let ph=''; for(let p=1;p<=pageCount(ep);p++){const lock=p>1&&!isMember();
-    ph+=`<button class="pg ${p===page?'on':''} ${lock?'locked':''}" onclick="go(${ep},${p})" aria-label="${t.page} ${p}"><img src="thumbs/e${ep}_p${p}.jpg" alt="" loading="lazy"><span class="cap">${lock?'🔒':''}${t.page} ${p}${p===1?` <span class="free">${t.free}</span>`:''}</span></button>`}
+  let ph=''; for(let p=1;p<=pageCount(ep);p++){const lock=!isFree(ep,p)&&!isMember();
+    ph+=`<button class="pg ${p===page?'on':''} ${lock?'locked':''}" onclick="go(${ep},${p})" aria-label="${t.page} ${p}"><img src="thumbs/e${ep}_p${p}.jpg" alt="" loading="lazy"><span class="cap">${lock?'🔒':''}${t.page} ${p}${isFree(ep,p)?` <span class="free">${t.free}</span>`:''}</span></button>`}
   $('pages').innerHTML=ph; $('pages').style.display=pageCount(ep)?'':'none';
   $('palette').innerHTML=COLORS.map(c=>`<button class="sw ${c===color&&tool!=='eraser'?'on':''}" style="background:${c}" onclick="pick('${c}')" aria-label="${c}"></button>`).join('');
   ['Fill','Brush','Eraser'].forEach(n=>$('b'+n).classList.toggle('on',n.toLowerCase()===tool));
@@ -382,7 +385,7 @@ window.addEventListener('pagehide',saveArtNow);
 
 let loadToken=0;
 function loadPage(){
-  const t=T[lang], has=pageCount(ep)>0, locked = has && page>1 && !isMember();
+  const t=T[lang], has=pageCount(ep)>0, locked = has && !isFree(ep,page) && !isMember();
   $('lockIcon').textContent = has ? '🔒' : '🎬';
   $('tLocked').textContent = has ? t.locked : t.soon2;
   $('tLockedBtn').style.display = has ? '' : 'none';
