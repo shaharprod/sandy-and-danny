@@ -1,0 +1,34 @@
+{
+  "_about": "Sandy And Danny - Hebrew lexicon for TTS (ElevenLabs eleven_v4). 'tts' = the pointed spelling sent to TTS. Subtitles always use the plain spelling. Add every new character here BEFORE its first episode.",
+  "names": {
+    "סנדי":  {"tts": "סֶנְדִּי",  "say": "SEN-di"},
+    "דני":   {"tts": "דָּנִי",    "say": "DA-ni (not Deni)"},
+    "קיטי":  {"tts": "קִיטִי",   "say": "KI-ti"},
+    "דובי":  {"tts": "דּוּבִּי",  "say": "DOO-bee (B, not Duvi)"},
+    "שוקו":  {"tts": "שׁוֹקוֹ",  "say": "SHO-ko"},
+    "מוצי":  {"tts": "מוּצִי",   "say": "MOO-tsi"},
+    "פיצי":  {"tts": "פִּיצִי",  "say": "PI-tsi"}
+  },
+  "prefix_letters": "ולבכמש",
+  "_prefix_rule": "A name with a prefix letter (לדובי, בשוקו, ומוצי...) must be fully pointed for TTS, e.g. לְדוּבִּי - the unpointed form was read 'la-Duvi' in EP1.",
+  "words": {
+    "לדרך":   {"tts": "לַדֶּרֶךְ", "why": "EP1 song: sung 'le-derekh' instead of 'la-derekh'"},
+    "חדשה":   {"tts": "חֲדָשָׁה", "why": "EP1: stress landed on the wrong syllable; stress is on -SHA"},
+    "הריח":   {"tts": "הֵרִיחַ / מֵרִיחַ", "why": "EP1: tense came out wrong; point the verb in the tense you mean"},
+    "מריח":   {"tts": "מֵרִיחַ", "why": "homograph; point it"},
+    "מתקתק":  {"tts": null, "why": "EP2: means a clock ticking (or 'sweetish'); a chick inside an egg KNOCKS - use 'דופק' / 'מקיש'", "replace": "דופק"},
+    "קומי":   {"tts": "קוּמִי", "why": "imperative; point it"},
+    "סרקו":   {"tts": "סִרְקוּ", "why": "imperative; point it"},
+    "לך":     {"tts": "לְךָ / לָךְ", "why": "TTS reads unpointed 2nd person as feminine by default - point by the listener's gender"},
+    "אותך":   {"tts": "אוֹתְךָ / אוֹתָךְ", "why": "same gender default problem"},
+    "שלך":    {"tts": "שֶׁלְּךָ / שֶׁלָּךְ", "why": "same gender default problem"},
+    "בשבילך": {"tts": "בִּשְׁבִילְךָ / בִּשְׁבִילֵךְ", "why": "same gender default problem"}
+  },
+  "calques": [
+    {"pattern": "שומר(ת)? על ה\\S+ (חם|חמה)", "why": "word-for-word from 'keeping X warm'", "suggest": "מחמם/מחממת את ה..."},
+    {"pattern": "ממלאים מים", "why": "missing object - fill what?", "suggest": "ממלאים את קערת המים"},
+    {"pattern": "עושה (את )?הכי טוב", "why": "calque of 'doing his best'", "suggest": "משתדל מאוד"}
+  ],
+  "imperatives_plural": ["סרקו", "צבעו", "הדפיסו", "שירו", "חפשו", "נסו", "הקשיבו", "ספרו", "תראו", "תסרקו", "תצבעו"],
+  "_person_rule": "Do not mix an imperative to 'you' (סרקו) with a 'we' verb (ונצבע) in one sentence. 'בואו + נ...' is correct and is NOT flagged."
+}
